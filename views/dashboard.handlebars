@@ -1,0 +1,26 @@
+{{> header}}
+
+<div class="container">
+  <h2>My Posts</h2>
+  {{#if posts.length}}
+    {{#each posts}}
+      <div class="post-preview">
+        <h2>{{this.title}}</h2>
+        <a href="/post/{{this.id}}">Edit</a>
+        <button class="delete-btn" data-id="{{this.id}}">Delete</button>
+      </div>
+    {{/each}}
+  {{else}}
+    <p>You have no posts yet!</p>
+  {{/if}}
+
+  <form id="new-post-form">
+    <input type="text" name="title" placeholder="Title" required>
+    <textarea name="content" placeholder="Write your post here..." required></textarea>
+    <button type="submit">Create Post</button>
+  </form>
+</div>
+
+<script src="/js/post.js"></script>
+
+{{> footer}}

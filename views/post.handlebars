@@ -1,0 +1,37 @@
+{{> header}}
+
+<div class="container">
+  <div class="post-detail">
+    <h2>{{title}}</h2>
+    <p>by {{user.username}} on {{createdAt}}</p>
+    <p>{{content}}</p>
+  </div>
+
+  {{#if logged_in}}
+    <div class="comments">
+      <h3>Comments</h3>
+
+      {{#if comments.length}}
+        {{#each comments}}
+          <div class="comment">
+            <p>{{content}}</p>
+            <p>— {{user.username}} on {{createdAt}}</p>
+          </div>
+        {{/each}}
+      {{else}}
+        <p>No comments yet!</p>
+      {{/if}}
+
+      <form id="new-comment-form">
+        <textarea name="content" placeholder="Leave a comment..." required></textarea>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  {{else}}
+    <p><a href="/login">Log in</a> to leave a comment.</p>
+  {{/if}}
+</div>
+
+<script src="/js/comment.js"></script>
+
+{{> footer}}

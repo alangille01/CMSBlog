@@ -1,0 +1,17 @@
+{{> header}}
+
+<div class="container">
+  {{#if posts.length}}
+    {{#each posts}}
+      <div class="post-preview">
+        <h2>{{this.title}}</h2>
+        <p>by {{this.user.username}} on {{this.createdAt}}</p>
+        <a href="/post/{{this.id}}">Read more</a>
+      </div>
+    {{/each}}
+  {{else}}
+    <p>No posts yet!</p>
+  {{/if}}
+</div>
+
+{{> footer}}
